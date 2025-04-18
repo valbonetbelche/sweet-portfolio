@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -14,8 +15,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 
-const FORMSPREE_URL = process.env.NEXT_PUBLIC_FORMSPREE_URL as string
-console.log(FORMSPREE_URL)
+const FORMSPREE_URL = process.env.NEXT_PUBLIC_FORMSPREE_URL
+
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Enter a valid email"),
@@ -26,6 +27,8 @@ const contactFormSchema = z.object({
 })
 
 export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const form = useForm({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -39,6 +42,12 @@ export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
   })
 
   const onSubmit = async (data: z.infer<typeof contactFormSchema>) => {
+    if (!FORMSPREE_URL) {
+      alert("Formspree URL is not configured.")
+      return
+    }
+
+    setIsSubmitting(true)
     try {
       const response = await fetch(FORMSPREE_URL, {
         method: "POST",
@@ -47,60 +56,66 @@ export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
       })
 
       if (response.ok) {
-        alert("Thank you! Your message has been sent.")
+        alert("✅ Message sent successfully!")
         form.reset()
         onSuccess?.()
       } else {
-        alert("Failed to send your message. Please try again.")
+        alert("❌ Failed to send message. Please try again.")
       }
     } catch (error) {
       console.error(error)
-      alert("An error occurred. Please try again.")
+      alert("❌ Something went wrong. Please try again later.")
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
+        {/* Name */}
         <FormField
           control={form.control}
           name="name"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="Name" {...field} />
+                <Input placeholder="Name" {...field} required />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
+        {/* Email */}
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input type="email" placeholder="Email" {...field} />
+                <Input type="email" placeholder="Email" {...field} required />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
+        {/* Message */}
         <FormField
           control={form.control}
           name="message"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Textarea placeholder="Message" {...field} />
+                <Textarea placeholder="Message" {...field} required />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
+        {/* Phone */}
         <FormField
           control={form.control}
           name="phone"
@@ -113,6 +128,7 @@ export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
           )}
         />
 
+        {/* Company */}
         <FormField
           control={form.control}
           name="company"
@@ -125,6 +141,7 @@ export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
           )}
         />
 
+        {/* Role */}
         <FormField
           control={form.control}
           name="role"
@@ -137,8 +154,8 @@ export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
           )}
         />
 
-        <Button type="submit" className="w-full">
-          Send Message
+        <Button type="submit" className="w-full" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
     </Form>

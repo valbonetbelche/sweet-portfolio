@@ -10,9 +10,9 @@ import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg">
+    <main className="min-h-screen bg-muted">
       <div className="mx-auto flex max-w-7xl flex-col lg:flex-row p-6 gap-8">
-        {/* Sidebar */}
+        {/* Profile card */}
         <motion.div
           className="lg:w-1/3"
           initial={{ opacity: 0, x: -50 }}
@@ -22,32 +22,33 @@ export default function Home() {
           <ProfileCard />
         </motion.div>
 
-        {/* Right Section: Header + Cards */}
+        {/* Cards */}
         <div className="flex-1 space-y-4">
-          {/* Transparent Header with ThemeToggle */}
           <div className="w-full flex justify-end mb-2">
-            <div className="bg-transparent">
-              <ThemeToggle />
-            </div>
+            <ThemeToggle />
           </div>
 
-          {/* Cards */}
-          {projectCards.map((card, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + index * 0.1 }}
-            >
-              <WideProjectCard
-                type={card.type}
-                title={card.title}
-                items={card.items}
-              />
-            </motion.div>
-          ))}
+          {projectCards.map((card, index) => {
+            const isJobCard = card.type === "job"
+
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + index * 0.1 }}
+              >
+                <WideProjectCard
+                  type={card.type}
+                  title={card.title}
+                  items={card.items}
+                />
+              </motion.div>
+            )
+          })}
         </div>
       </div>
+
       <Footer />
       <FloatingBadge />
     </main>

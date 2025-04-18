@@ -5,21 +5,21 @@ import { useTheme } from "next-themes"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card"
-import { ProjectType } from "@/lib/data/projects"
+import type { ProjectType } from "@/lib/data/projects"
 import Image from "next/image"
 
 type Item = {
   name: string
   logo: string
-  title?: string
-  city?: string
-  duration?: string
-  details?: string
   url?: string
+  details?: string
   badge?: {
     label: string
     variant?: "default" | "secondary" | "outline" | "destructive"
   }
+  jobTitle?: string
+  city?: string
+  duration?: string
 }
 
 type Props = {
@@ -37,7 +37,7 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
   }, [])
 
   const getImagePath = (logo: string) => {
-    if (!mounted) return logo // fallback to light image on SSR
+    if (!mounted) return logo
     if (resolvedTheme === "dark") {
       return logo.replace("/light/", "/dark/")
     }
@@ -61,7 +61,7 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
                   className="rounded-lg object-contain"
                 />
                 <div>
-                  <h4 className="text-base font-semibold">{job.title}</h4>
+                  <h4 className="text-base font-semibold">{job.jobTitle}</h4>
                   <p className="text-sm text-muted-foreground">{job.name} – {job.city}</p>
                   <p className="text-xs text-muted-foreground">{job.duration}</p>
                 </div>
@@ -127,7 +127,11 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
                     content
                   )}
                 </HoverCardTrigger>
-                <HoverCardContent className="w-64 text-sm">{item.details}</HoverCardContent>
+                {item.details && (
+                  <HoverCardContent className="w-64 text-sm">
+                    {item.details}
+                  </HoverCardContent>
+                )}
               </HoverCard>
             )
           })}

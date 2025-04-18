@@ -1,36 +1,25 @@
 export type ProjectType = "personal" | "freelance" | "job"
 
-export interface ProjectItem {
-  type: "personal" | "freelance"
+export interface ProjectCardItem {
+  type: ProjectType
   title: string
   items: {
     name: string
-    details: string
     logo: string
     url?: string
+    details?: string // for personal/freelance
     badge?: {
       label: string
-      variant: string
+      variant?: "default" | "secondary" | "outline" | "destructive"
     }
+    // job-specific optional fields
+    jobTitle?: string
+    city?: string
+    duration?: string
   }[]
 }
 
-export interface JobItem {
-  type: "job"
-  title: string
-  items: {
-    name: string
-    title: string
-    city: string
-    duration: string
-    logo: string
-    url?: string
-  }[]
-}
-
-export type ProjectCardData = ProjectItem | JobItem
-
-export const projectCards: ProjectCardData[] = [
+export const projectCards: ProjectCardItem[] = [
   {
     type: "personal",
     title: "Personal Projects",
@@ -39,7 +28,7 @@ export const projectCards: ProjectCardData[] = [
         name: "Faststack.dev",
         details: "Saas boilerplate and deployment starter – coming soon",
         logo: "/logos/light/faststack.png",
-        badge: { label: "Coming Soon", variant: "secondary" }
+        badge: { label: "Coming Soon", variant: "secondary" },
       },
       {
         name: "Kalend",
@@ -64,25 +53,25 @@ export const projectCards: ProjectCardData[] = [
         name: "OYYA Labs",
         details: "Backend Integrations for Medical Tech",
         logo: "/logos/light/oyya.png",
-        url: "https://oyya.fr"
+        url: "https://oyya.fr",
       },
       {
         name: "Encounter Ministries",
         details: "Stripe Payments Integration Consulting",
         logo: "/logos/light/encounter.png",
-        url: "https://encounterministries.us/"
+        url: "https://encounterministries.us/",
       },
       {
         name: "DarlingsMusicLessons",
         details: "Music teaching Frontend",
         logo: "/logos/light/darling.webp",
-        url: "https://darlingsmusiclessons.com"
+        url: "https://darlingsmusiclessons.com",
       },
       {
         name: "HopeFree.org",
         details: "Church website",
         logo: "/logos/light/hope.png",
-        url: "https://hopefree.org"
+        url: "https://hopefree.org",
       },
     ],
   },
@@ -92,43 +81,43 @@ export const projectCards: ProjectCardData[] = [
     items: [
       {
         name: "Amadeus",
-        title: "Senior Big Data DevOps & SRE Engineer",
+        jobTitle: "Senior Big Data DevOps & SRE Engineer",
         city: "Nice, France",
         duration: "2025 – Present",
         logo: "/logos/light/amadeus.png",
-        url: "https://amadeus.com"
+        url: "https://amadeus.com",
       },
       {
         name: "Appaway",
-        title: "Founder & Lead Developer",
+        jobTitle: "Founder & Lead Developer",
         city: "Remote",
         duration: "2023 – 2024",
         logo: "/logos/light/appaway.png",
-        url: "https://bubble.io"
+        url: "https://bubble.io",
       },
       {
         name: "Walters",
-        title: "IT Manager & Lead Engineer",
+        jobTitle: "IT Manager & Lead Engineer",
         city: "Harrisburg, PA",
         duration: "2021 – 2023",
         logo: "/logos/light/walters.png",
-        url: "https://waltersservicesinc.com"
+        url: "https://waltersservicesinc.com",
       },
       {
         name: "Lumapps (Axel)",
-        title: "Backend Engineer",
+        jobTitle: "Backend Engineer",
         city: "Paris, France",
         duration: "2020 – 2021",
         logo: "/logos/light/lumapps.svg",
-        url: "https://www.lumapps.com/platform/lumapps-journeys"
+        url: "https://www.lumapps.com/platform/lumapps-journeys",
       },
       {
         name: "Wikicampers",
-        title: "Frontend Developer",
+        jobTitle: "Frontend Developer",
         city: "Biarritz, France",
         duration: "2019 – 2020",
         logo: "/logos/light/wikicampers.svg",
-        url: "https://wikicampers.fr"
+        url: "https://wikicampers.fr",
       },
     ],
   },

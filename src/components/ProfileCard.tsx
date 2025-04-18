@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Twitter, Globe, MapPin } from "lucide-react"
-import { z } from "zod"
 import { profile } from "@/lib/data/profile"
 import ContactForm from "@/components/ContactForm"
 
@@ -73,14 +72,18 @@ export default function ProfileCard() {
               <AvatarImage src={profile.avatar} alt={profile.name} />
               <AvatarFallback>{profile.name.slice(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
+
             <div className="text-center">
               <h1 className="text-2xl font-bold">{profile.name}</h1>
               <p className="text-muted-foreground flex items-center justify-center gap-1">
-                <MapPin className="w-4 h-4" /> {profile.location}
+                <MapPin className="w-4 h-4" />
+                {profile.location}
               </p>
               <p className="text-muted-foreground text-sm">{profile.email}</p>
             </div>
+
             <p className="text-sm text-center italic">{profile.quote}</p>
+
             <div className="flex gap-4">
               {profile.socials.map((social, index) => {
                 const Icon = icons[social.icon as keyof typeof icons]
@@ -94,11 +97,15 @@ export default function ProfileCard() {
               })}
             </div>
 
-            <Button variant="ghost" className="w-full" onClick={() => setExpanded((prev) => !prev)}>
+            <Button
+              variant="ghost"
+              className="w-full"
+              onClick={() => setExpanded((prev) => !prev)}
+            >
               {expanded ? "Close Contact Form" : "Get in touch"}
             </Button>
 
-            {expanded && mounted && (
+            {mounted && expanded && (
               <ContactForm onSuccess={() => setExpanded(false)} />
             )}
           </CardContent>
