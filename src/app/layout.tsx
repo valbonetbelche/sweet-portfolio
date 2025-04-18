@@ -3,6 +3,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { metadata } from "@/lib/data/metadata";
 
+export { metadata }
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
