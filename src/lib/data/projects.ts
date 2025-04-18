@@ -50,6 +50,12 @@ export const projectCards: ProjectCardItem[] = [
     title: "Freelance Projects",
     items: [
       {
+        name: "Capital Partners Law",
+        details: "Consulting for Internal automated communication Platform",
+        logo: "/logos/light/cplfirm.png",
+        url: "https://www.cplfirm.com/",
+      },
+      {
         name: "OYYA Labs",
         details: "Backend Integrations for Medical Tech",
         logo: "/logos/light/oyya.png",
