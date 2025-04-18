@@ -22,34 +22,40 @@ export default function Home() {
           <ProfileCard />
         </motion.div>
 
-        {/* Cards */}
+        {/* Cards section */}
         <div className="flex-1 space-y-4">
-          <div className="w-full flex justify-end mb-2">
+          {/* Desktop theme toggle */}
+          <div className="hidden lg:flex w-full justify-end mb-2">
             <ThemeToggle />
           </div>
 
-          {projectCards.map((card, index) => {
-
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + index * 0.1 }}
-              >
-                <WideProjectCard
-                  type={card.type}
-                  title={card.title}
-                  items={card.items}
-                />
-              </motion.div>
-            )
-          })}
+          {/* Wide project cards */}
+          {projectCards.map((card, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + index * 0.1 }}
+            >
+              <WideProjectCard
+                type={card.type}
+                title={card.title}
+                items={card.items}
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
 
       <Footer />
       <FloatingBadge />
+
+      {/* Mobile floating theme toggle as FAB */}
+      <div className="fixed bottom-4 right-4 z-50 lg:hidden">
+      <div className="fixed bottom-4 right-4 z-50 lg:hidden">
+  <ThemeToggle />
+</div>
+      </div>
     </main>
   )
 }
