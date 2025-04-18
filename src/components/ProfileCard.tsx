@@ -32,18 +32,6 @@ export default function ProfileCard() {
   const [expanded, setExpanded] = useState(false)
   const [mounted, setMounted] = useState(false)
 
-  const form = useForm({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-      phone: "",
-      company: "",
-      role: "",
-    },
-  })
-
   useEffect(() => {
     setMounted(true)
 
