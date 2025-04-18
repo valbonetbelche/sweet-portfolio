@@ -10,7 +10,7 @@ import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-muted">
+    <main className="min-h-screen bg">
       <div className="mx-auto flex max-w-7xl flex-col lg:flex-row p-6 gap-8">
         {/* Profile card */}
         <motion.div
