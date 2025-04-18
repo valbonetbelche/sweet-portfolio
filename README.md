@@ -1,4 +1,4 @@
-# 🚀 Sweet Portfolio – Launch Your Developer Profile in Minutes
+# 🚀 Sweet Portfolio – Launch Your Developer Portfolio and CV in Minutes
 
 This is a sleek, responsive portfolio template built with **Next.js**, **TailwindCSS**, **ShadCN**, **TypeScript**, and deployed on **Vercel**.
 
@@ -26,7 +26,7 @@ It is free to clone into your own repo, and deploy for free with Vercel! ❤️
 ### 1. Clone this repo
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+git clone https://github.com/valbonetbelche/sweet-portfolio.git your-name-portfolio
 cd YOUR-REPO-NAME
 ```
 
@@ -98,6 +98,7 @@ git push --force origin main
 
 - Go to [vercel.com](https://vercel.com)
 - Sign in with GitHub
+- Create a new project
 - Import your newly pushed GitHub repo
 - Set an environment variable:
   - `NEXT_PUBLIC_FORMSPREE_URL=https://formspree.io/f/your-form-id`
