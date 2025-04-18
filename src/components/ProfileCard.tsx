@@ -16,15 +16,6 @@ const icons = {
   globe: Globe,
 }
 
-const contactFormSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  message: z.string().min(10),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  role: z.string().optional(),
-})
-
 export default function ProfileCard() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [expanded, setExpanded] = useState(false)
