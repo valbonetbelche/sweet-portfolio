@@ -74,7 +74,7 @@ export const projectCards: ProjectCardItem[] = [
         url: "https://darlingsmusiclessons.com",
       },
       {
-        name: "HopeFree.org",
+        name: "Hope Free",
         details: "Church website",
         logo: "/logos/light/hope.png",
         url: "https://hopefree.org",
