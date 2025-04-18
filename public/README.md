@@ -2,8 +2,6 @@
 
 This is a sleek, responsive portfolio template built with **Next.js**, **TailwindCSS**, **ShadCN**, **TypeScript**, and deployed on **Vercel**.
 
-It is free to clone into your own repo, and deploy for free with Vercel! ❤️
-
 ### 🖥 Demo
 👉 [valbonetbelche.com](https://valbonetbelche.com)
 
