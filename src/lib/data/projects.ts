@@ -56,6 +56,12 @@ export const projectCards: ProjectCardItem[] = [
         url: "https://www.cplfirm.com/",
       },
       {
+        name: "BizzQuery",
+        details: "An Internal tool to scrape and export local businesses data",
+        logo: "/logos/light/bizzquery.png",
+        url: "#",
+      },
+      {
         name: "OYYA Labs",
         details: "Backend Integrations for Medical Tech",
         logo: "/logos/light/oyya.png",
@@ -68,7 +74,7 @@ export const projectCards: ProjectCardItem[] = [
         url: "https://encounterministries.us/",
       },
       {
-        name: "DarlingsMusicLessons",
+        name: "Darlings Music Lessons",
         details: "Music teaching Frontend",
         logo: "/logos/light/darling.webp",
         url: "https://darlingsmusiclessons.com",
