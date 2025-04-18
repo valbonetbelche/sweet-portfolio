@@ -80,27 +80,6 @@ export default function ProfileCard() {
     }
   }, [])
 
-  const onSubmit = async (data: z.infer<typeof contactFormSchema>) => {
-    try {
-      const response = await fetch("https://formspree.io/f/xzzzagqw", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-
-      if (response.ok) {
-        alert("Thank you! Your message has been sent.")
-        form.reset()
-        setExpanded(false)
-      } else {
-        alert("Failed to send your message. Please try again.")
-      }
-    } catch (error) {
-      console.error(error)
-      alert("An error occurred. Please try again.")
-    }
-  }
-
   return (
     <div className="perspective-[1200px] group lg:sticky lg:top-10 max-w-sm mx-auto">
       <div
