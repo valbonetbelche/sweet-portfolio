@@ -11,7 +11,7 @@ import Footer from "@/components/Footer"
 export default function Home() {
   return (
     <main className="min-h-screen bg">
-      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row p-6 gap-8">
+      <div className="mx-auto flex max-w-7xl flex-col lg:flex-row p-4 gap-6 lg:gap-8">
         {/* Profile card */}
         <motion.div
           className="lg:w-1/3"
@@ -47,7 +47,9 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer />
+      <div className="mt-8 lg:mt-12">
+  <Footer />
+</div>
       <FloatingBadge />
 
       {/* Mobile floating theme toggle as FAB */}

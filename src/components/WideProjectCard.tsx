@@ -84,10 +84,10 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
           })}
         </div>
       ) : (
-        <div className="flex flex-wrap gap-6">
+        <div className="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-3">
           {items.map((item, index) => {
             const content = (
-              <div className="w-24 flex flex-col items-center cursor-pointer hover:scale-105 transition">
+                <div className="flex flex-col items-center cursor-pointer hover:scale-105 transition">
                 {item.badge && (
                   <Badge
                     variant={item.badge.variant || "default"}
