@@ -29,7 +29,6 @@ export default function Home() {
           </div>
 
           {projectCards.map((card, index) => {
-            const isJobCard = card.type === "job"
 
             return (
               <motion.div
