@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useForm } from "react-hook-form"
-import { z } from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form"
+} from "@/components/ui/form";
 
-const FORMSPREE_URL = process.env.NEXT_PUBLIC_FORMSPREE_URL
+const FORMSPREE_URL = process.env.NEXT_PUBLIC_FORMSPREE_URL;
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -24,10 +24,10 @@ const contactFormSchema = z.object({
   phone: z.string().optional(),
   company: z.string().optional(),
   role: z.string().optional(),
-})
+});
 
 export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(contactFormSchema),
@@ -39,36 +39,36 @@ export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
       company: "",
       role: "",
     },
-  })
+  });
 
   const onSubmit = async (data: z.infer<typeof contactFormSchema>) => {
     if (!FORMSPREE_URL) {
-      alert("Formspree URL is not configured.")
-      return
+      alert("Formspree URL is not configured.");
+      return;
     }
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
     try {
       const response = await fetch(FORMSPREE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-      })
+      });
 
       if (response.ok) {
-        alert("✅ Message sent successfully!")
-        form.reset()
-        onSuccess?.()
+        alert("✅ Message sent successfully!");
+        form.reset();
+        onSuccess?.();
       } else {
-        alert("❌ Failed to send message. Please try again.")
+        alert("❌ Failed to send message. Please try again.");
       }
     } catch (error) {
-      console.error(error)
-      alert("❌ Something went wrong. Please try again later.")
+      console.error(error);
+      alert("❌ Something went wrong. Please try again later.");
     } finally {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <Form {...form}>
@@ -159,5 +159,5 @@ export default function ContactForm({ onSuccess }: { onSuccess?: () => void }) {
         </Button>
       </form>
     </Form>
-  )
+  );
 }

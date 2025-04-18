@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import ProfileCard from "@/components/ProfileCard"
-import { WideProjectCard } from "@/components/WideProjectCard"
-import { projectCards } from "@/lib/data/projects"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
-import FloatingBadge from "@/components/FloatingBadge"
-import Footer from "@/components/Footer"
+import { motion } from "framer-motion";
+import ProfileCard from "@/components/ProfileCard";
+import { WideProjectCard } from "@/components/WideProjectCard";
+import { projectCards } from "@/lib/data/projects";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+import FloatingBadge from "@/components/FloatingBadge";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -35,7 +35,11 @@ export default function Home() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut", delay: 0.2 + index * 0.1 }}
+              transition={{
+                duration: 0.4,
+                ease: "easeOut",
+                delay: 0.2 + index * 0.1,
+              }}
             >
               <WideProjectCard
                 type={card.type}
@@ -48,16 +52,16 @@ export default function Home() {
       </div>
 
       <div className="mt-8 lg:mt-12">
-  <Footer />
-</div>
+        <Footer />
+      </div>
       <FloatingBadge />
 
       {/* Mobile floating theme toggle as FAB */}
       <div className="fixed bottom-4 right-4 z-50 lg:hidden">
-      <div className="fixed bottom-4 right-4 z-50 lg:hidden">
-  <ThemeToggle />
-</div>
+        <div className="fixed bottom-4 right-4 z-50 lg:hidden">
+          <ThemeToggle />
+        </div>
       </div>
     </main>
-  )
+  );
 }

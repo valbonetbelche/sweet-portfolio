@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
-import { GitBranch } from "lucide-react"
+import { Badge } from "@/components/ui/badge";
+import { GitBranch } from "lucide-react";
 
 export default function FloatingBadge() {
   return (
     <a
-      href="https://github.com/valbonetbelche/your-profile-repo"
+      href="https://github.com/valbonetbelche/sweet-portfolio"
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-4 left-4 z-50 hidden lg:block"
@@ -19,5 +19,5 @@ export default function FloatingBadge() {
         Clone this profile page ❤️
       </Badge>
     </a>
-  )
+  );
 }

@@ -1,48 +1,52 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { useTheme } from "next-themes"
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card"
-import type { ProjectType } from "@/lib/data/projects"
-import Image from "next/image"
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  HoverCard,
+  HoverCardTrigger,
+  HoverCardContent,
+} from "@/components/ui/hover-card";
+import type { ProjectType } from "@/lib/data/projects";
+import Image from "next/image";
 
 type Item = {
-  name: string
-  logo: string
-  url?: string
-  details?: string
+  name: string;
+  logo: string;
+  url?: string;
+  details?: string;
   badge?: {
-    label: string
-    variant?: "default" | "secondary" | "outline" | "destructive"
-  }
-  jobTitle?: string
-  city?: string
-  duration?: string
-}
+    label: string;
+    variant?: "default" | "secondary" | "outline" | "destructive";
+  };
+  jobTitle?: string;
+  city?: string;
+  duration?: string;
+};
 
 type Props = {
-  type: ProjectType
-  title: string
-  items: Item[]
-}
+  type: ProjectType;
+  title: string;
+  items: Item[];
+};
 
 export const WideProjectCard = ({ title, items, type }: Props) => {
-  const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   const getImagePath = (logo: string) => {
-    if (!mounted) return logo
+    if (!mounted) return logo;
     if (resolvedTheme === "dark") {
-      return logo.replace("/light/", "/dark/")
+      return logo.replace("/light/", "/dark/");
     }
-    return logo
-  }
+    return logo;
+  };
 
   return (
     <Card className="w-full p-6 border-none shadow-sm bg-muted hover:bg-card/70 transition-all duration-300">
@@ -62,11 +66,15 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
                 />
                 <div>
                   <h4 className="text-base font-semibold">{job.jobTitle}</h4>
-                  <p className="text-sm text-muted-foreground">{job.name} – {job.city}</p>
-                  <p className="text-xs text-muted-foreground">{job.duration}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {job.name} – {job.city}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {job.duration}
+                  </p>
                 </div>
               </div>
-            )
+            );
 
             return job.url ? (
               <a
@@ -80,14 +88,14 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
               </a>
             ) : (
               <div key={index}>{content}</div>
-            )
+            );
           })}
         </div>
       ) : (
-        <div className="grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-3">
+        <div className="flex flex-wrap gap-6">
           {items.map((item, index) => {
             const content = (
-                <div className="flex flex-col items-center cursor-pointer hover:scale-105 transition">
+              <div className="w-24 flex flex-col items-center cursor-pointer hover:scale-105 transition">
                 {item.badge && (
                   <Badge
                     variant={item.badge.variant || "default"}
@@ -109,7 +117,7 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
                   {item.name}
                 </span>
               </div>
-            )
+            );
 
             return (
               <HoverCard key={index}>
@@ -133,10 +141,10 @@ export const WideProjectCard = ({ title, items, type }: Props) => {
                   </HoverCardContent>
                 )}
               </HoverCard>
-            )
+            );
           })}
         </div>
       )}
     </Card>
-  )
-}
+  );
+};

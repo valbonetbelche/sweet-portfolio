@@ -1,22 +1,22 @@
-export type ProjectType = "personal" | "freelance" | "job"
+export type ProjectType = "personal" | "freelance" | "job";
 
 export interface ProjectCardItem {
-  type: ProjectType
-  title: string
+  type: ProjectType;
+  title: string;
   items: {
-    name: string
-    logo: string
-    url?: string
-    details?: string // for personal/freelance
+    name: string;
+    logo: string;
+    url?: string;
+    details?: string; // for personal/freelance
     badge?: {
-      label: string
-      variant?: "default" | "secondary" | "outline" | "destructive"
-    }
+      label: string;
+      variant?: "default" | "secondary" | "outline" | "destructive";
+    };
     // job-specific optional fields
-    jobTitle?: string
-    city?: string
-    duration?: string
-  }[]
+    jobTitle?: string;
+    city?: string;
+    duration?: string;
+  }[];
 }
 
 export const projectCards: ProjectCardItem[] = [
@@ -25,22 +25,15 @@ export const projectCards: ProjectCardItem[] = [
     title: "Personal Projects",
     items: [
       {
-        name: "Faststack.dev",
-        details: "Saas boilerplate and deployment starter – coming soon",
-        logo: "/logos/light/faststack.png",
+        name: "NextFuture",
+        details: "My future project",
+        logo: "/logos/light/future.png",
         badge: { label: "Coming Soon", variant: "secondary" },
       },
       {
-        name: "Kalend",
-        details: "Booking system – coming soon",
-        logo: "/logos/light/kalend.png",
-        badge: { label: "Coming Soon", variant: "secondary" },
-      },
-      {
-        name: "Appaway",
-        details: "App builder for small businesses – exited",
-        logo: "/logos/light/appaway.png",
-        url: "https://bubble.io",
+        name: "TurboBoost",
+        details: "A turbo app. For fast people",
+        logo: "/logos/light/turbo.png",
         badge: { label: "🎉 Exited", variant: "secondary" },
       },
     ],
@@ -50,40 +43,9 @@ export const projectCards: ProjectCardItem[] = [
     title: "Freelance Projects",
     items: [
       {
-        name: "Capital Partners Law",
-        details: "Consulting for Internal automated communication Platform",
-        logo: "/logos/light/cplfirm.png",
-        url: "https://www.cplfirm.com/",
-      },
-      {
-        name: "BizzQuery",
-        details: "An Internal tool to scrape and export local businesses data",
-        logo: "/logos/light/bizzquery.png",
-        url: "#",
-      },
-      {
-        name: "OYYA Labs",
-        details: "Backend Integrations for Medical Tech",
-        logo: "/logos/light/oyya.png",
-        url: "https://oyya.fr",
-      },
-      {
-        name: "Encounter Ministries",
-        details: "Stripe Payments Integration Consulting",
-        logo: "/logos/light/encounter.png",
-        url: "https://encounterministries.us/",
-      },
-      {
-        name: "Darlings Music Lessons",
-        details: "Music teaching Frontend",
-        logo: "/logos/light/darling.webp",
-        url: "https://darlingsmusiclessons.com",
-      },
-      {
-        name: "Hope Free",
-        details: "Church website",
-        logo: "/logos/light/hope.png",
-        url: "https://hopefree.org",
+        name: "Jeans Lawn",
+        details: "Website",
+        logo: "/logos/light/jeans.png",
       },
     ],
   },
@@ -92,45 +54,29 @@ export const projectCards: ProjectCardItem[] = [
     title: "Jobs",
     items: [
       {
-        name: "Amadeus",
-        jobTitle: "Senior Big Data DevOps & SRE Engineer",
-        city: "Nice, France",
-        duration: "2025 – Present",
-        logo: "/logos/light/amadeus.png",
-        url: "https://amadeus.com",
-      },
-      {
-        name: "Appaway",
-        jobTitle: "Founder & Lead Developer",
-        city: "Remote",
-        duration: "2023 – 2024",
-        logo: "/logos/light/appaway.png",
-        url: "https://bubble.io",
-      },
-      {
-        name: "Walters",
-        jobTitle: "IT Manager & Lead Engineer",
-        city: "Harrisburg, PA",
-        duration: "2021 – 2023",
-        logo: "/logos/light/walters.png",
-        url: "https://waltersservicesinc.com",
-      },
-      {
-        name: "Lumapps (Axel)",
+        name: "Google",
         jobTitle: "Backend Engineer",
-        city: "Paris, France",
-        duration: "2020 – 2021",
-        logo: "/logos/light/lumapps.svg",
-        url: "https://www.lumapps.com/platform/lumapps-journeys",
+        city: "Seattle, WA",
+        duration: "2022 – Present",
+        logo: "/logos/light/google.webp",
+        url: "https://google.com",
       },
       {
-        name: "Wikicampers",
-        jobTitle: "Frontend Developer",
-        city: "Biarritz, France",
-        duration: "2019 – 2020",
-        logo: "/logos/light/wikicampers.svg",
-        url: "https://wikicampers.fr",
+        name: "Amazon",
+        jobTitle: "Full-Stack Engineer",
+        city: "Seattle, WA",
+        duration: "2012 – 2022",
+        logo: "/logos/light/amazon.png",
+        url: "https://amazon.com",
+      },
+      {
+        name: "Domino's",
+        jobTitle: "Cook",
+        city: "Los Angeles, CA",
+        duration: "2008 – 2012",
+        logo: "/logos/light/dominos.png",
+        url: "https://dominos.com",
       },
     ],
   },
-]
+];

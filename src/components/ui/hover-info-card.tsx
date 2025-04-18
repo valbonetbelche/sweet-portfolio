@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
 import {
   HoverCard,
   HoverCardTrigger,
   HoverCardContent,
-} from "@/components/ui/hover-card"
-import { ReactNode } from "react"
+} from "@/components/ui/hover-card";
+import { ReactNode } from "react";
 
 type HoverInfoCardProps = {
-  children: ReactNode
-  info: ReactNode
-  side?: "top" | "bottom" | "left" | "right"
-  align?: "start" | "center" | "end"
-}
+  children: ReactNode;
+  info: ReactNode;
+  side?: "top" | "bottom" | "left" | "right";
+  align?: "start" | "center" | "end";
+};
 
 export const HoverInfoCard = ({
   children,
@@ -22,9 +22,7 @@ export const HoverInfoCard = ({
 }: HoverInfoCardProps) => {
   return (
     <HoverCard>
-      <HoverCardTrigger asChild>
-        {children}
-      </HoverCardTrigger>
+      <HoverCardTrigger asChild>{children}</HoverCardTrigger>
       <HoverCardContent
         side={side}
         align={align}
@@ -33,5 +31,5 @@ export const HoverInfoCard = ({
         {info}
       </HoverCardContent>
     </HoverCard>
-  )
-}
+  );
+};
